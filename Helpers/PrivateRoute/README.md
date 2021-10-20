@@ -18,4 +18,4 @@ Ejemplo de uso:
       </Router>
 ```
 
-PrivateRoute // tiene que recibir 3 valores por defecto el isAuthenticated  el componente y el redirect(donde see rediccionara si falla el isAuthenticated)
+PrivateRoute // tiene que recibir 3 valores por defecto el isAuthenticated(boolean)  el componente y el redirect(donde see rediccionara si falla el isAuthenticated)
