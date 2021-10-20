@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import { shape } from "prop-types";
 import "./tooltip.scss";
 
 export const Tooltipbasic = ({
@@ -10,24 +11,24 @@ export const Tooltipbasic = ({
   const ref = useRef(null); //Rereferencia al tooltip
   const tooltip = useRef(null);
   const handleClick = () => {
+     if (tooltip.current != null && ref.current != null) {
     //mostrar y posicionar el tooltip en el accion;
     let getBound = ref.current.getBoundingClientRect();
     let tool = tooltip.current;
     tool.style.top = getBound.y + getBound.height + 5 + "px";
     tool.style.left = getBound.x + getBound.width / 2 + "px";
-    setActive(!active);
+    setActive(!active);      
+     }
+     console.log(active)
   };
   if(tooltip.current != null && active==true){
-     console.log(active)
    window.addEventListener('scroll',()=>{
-      console.log
       if (active) {
-         handleClick();
+         setActive(false);
       }
    })
   }
   const Icon = React.forwardRef((props, ref) => {
-     
     return (
       <div className="tooltip_action" ref={ref} {...props}>
         <Action />
